@@ -27,8 +27,8 @@ There was a bug `auto-deploy-app` where the `production` service was pointing to
 
 ## Testing in AutoDevops 
 
-Simply set `CANARY_ENABLED` in your `.gitlab-ci.yml` when using `AutoDevops.  
-Deploy the app using this chart in `production` and then to `canary`.  
+Simply set `CANARY_ENABLED` in your `.gitlab-ci.yml` when using AutoDevops.  
+Deploy the app using this chart in `production` and then to `canary`. (this order is important because autodevops does not create any service/ingress in canary stage)
 
 Now make a request to service URL as:
 ```
