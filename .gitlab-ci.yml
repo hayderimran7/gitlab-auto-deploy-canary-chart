@@ -1,16 +1,23 @@
-image: "registry.gitlab.com/gitlab-org/gitlab-build-images:alpine-helm"
+image:
+  name: "dtzar/helm-kubectl:3.0.1"
+  entrypoint: ["/bin/sh","-c"]
+
 
 stages:
   - test
+  - build
 
 lint:
   stage: test
   script:
     - helm lint .
-
-test:
-  stage: test
+build_docker:
+  image: docker:stable
+  stage: build
+  variables:
+    IMAGE: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:1.1.0
   script:
-    - helm init --client-only
-    - helm dependency build .
+    - export HELM_EXPERIMENTAL_OCI=1
+    - helm chart save chart/ $IMAGE
+    - helm chart push $IMAGE
 
