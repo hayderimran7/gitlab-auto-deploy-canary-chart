@@ -18,5 +18,6 @@ build_chart:
   script:
     - export HELM_EXPERIMENTAL_OCI=1
     - helm chart save . $IMAGE
+    - helm registry login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - helm chart push $IMAGE
 
