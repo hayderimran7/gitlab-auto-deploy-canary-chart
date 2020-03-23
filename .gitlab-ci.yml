@@ -11,8 +11,7 @@ lint:
   stage: test
   script:
     - helm lint .
-build_docker:
-  image: docker:stable
+build_chart:
   stage: build
   variables:
     IMAGE: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:1.1.0
