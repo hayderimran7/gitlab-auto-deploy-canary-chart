@@ -7,8 +7,8 @@ The traffic routing in canary deployment is done based on header value while usi
 ## How it works
 We used `canary by header value` feature of `nginx-ingress` annotations https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary.  
 For that we had to modify official chart https://gitlab.com/gitlab-org/charts/auto-deploy-app to add two additional resources that are created during `canary` stage:
-* `canary-ingress`
-* `canary-service`
+* `canary-ingress` : [ingress-canary.yaml](templates/ingress-canary.yaml)
+* `canary-service` : [service-canary.yaml](templates/service-canary.yaml)
 
 ```mermaid
 graph TD;
