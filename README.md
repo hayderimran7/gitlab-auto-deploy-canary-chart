@@ -12,8 +12,9 @@ For that we had to modify official chart https://gitlab.com/gitlab-org/charts/au
 
 ```mermaid
 graph TD;
-A[Service URL ] --> B(Ingress);
-A[Service URL ] -->|Header = canary:always| C(Canary Ingress);
+Z[Service URL ] --> A(Nginx Ingress);
+A[Nginx Ingress ] --> B(Ingress);
+A[Nginx Ingress ] -->|Header = canary:always| C(Canary Ingress);
 B --> D[Service];
 C --> E[Ingress Service];
 D --> F[Production Deployment];
