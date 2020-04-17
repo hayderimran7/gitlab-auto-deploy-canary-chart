@@ -23,7 +23,7 @@ E --> G[Canary Deployment];
 
 The `canary-ingress` checks for header `canary`, if set, routes to `canary` service backend that then forwards  to `canary-deployment`.  
 
-There was a bug `auto-deploy-app` where the `production` service was pointing to both `production` deployment and `production-canary` deployment based on its selectors, which is raised here  https://gitlab.com/gitlab-org/charts/auto-deploy-app/issues/51.
+**NOTE** : There was a bug in [auto-deploy-app](https://gitlab.com/gitlab-org/charts/auto-deploy-app/-/issues/51) where the `production` service was pointing to both `production` deployment and `production-canary` deployment based on its selectors. This chart also takes care of it [here](https://gitlab.com/hayderimran7/auto-deploy-canary-chart/-/blob/master/templates/service.yaml#L29)
 
 ## Testing in AutoDevops 
 
